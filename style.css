@@ -140,3 +140,17 @@ footer .grow{flex:1}
 .gal img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
 .gal img:nth-child(1),.gal img:nth-child(4){grid-row:span 2;aspect-ratio:auto;height:100%}
 @media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr)}.gal img:nth-child(n){grid-row:auto;aspect-ratio:4/5;height:auto}}
+
+/* 12-hour tier */
+.tier12{margin-top:34px;background:var(--ink);color:#F4E8D6;border-radius:24px;padding:36px 32px}
+.tier12-head .tag{font:600 12px "IBM Plex Sans Arabic";letter-spacing:3px;color:var(--gold2)}
+.tier12-head h3{font-size:clamp(28px,3.4vw,38px);margin:6px 0 10px;color:#F4E8D6}
+.tier12-head p{margin:0;color:#CDBBA3;max-width:720px}
+.pk2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+.tier12 .plan:not(.hot){background:#3a2f2a;border-color:#4a3d36;color:#F4E8D6}
+.tier12 .plan:not(.hot) li{border-color:rgba(244,232,214,.15)}
+.tier12 .plan:not(.hot) .btn.ghost{color:#F4E8D6;border-color:#F4E8D6}
+.tier12 .plan.hot{background:#F8F1E1;color:var(--ink);border-color:var(--gold2)}
+.tier12 .plan.hot .tag{color:var(--gold)}
+.tier12 .plan.hot li{border-color:var(--line)}
+@media(max-width:760px){.pk2{grid-template-columns:1fr}.tier12{padding:28px 20px}}
