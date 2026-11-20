@@ -117,3 +117,10 @@ footer .grow{flex:1}
 .peek{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
 .peek img{border-radius:12px;border:1px solid var(--line);aspect-ratio:3/4;object-fit:cover;object-position:top;width:100%}
 @media(max-width:860px){.peek{grid-template-columns:repeat(2,1fr)}}
+
+/* custom package band */
+.custom{margin-top:18px;display:flex;gap:24px;align-items:center;justify-content:space-between;background:var(--cream);border:1.5px dashed var(--gold);border-radius:20px;padding:24px 28px}
+.custom .tag{font:600 12px "IBM Plex Sans Arabic";letter-spacing:3px;color:var(--gold)}
+.custom h3{font-size:30px;margin:4px 0 6px}
+.custom p{margin:0;color:var(--muted);max-width:640px}
+@media(max-width:760px){.custom{flex-direction:column;align-items:flex-start}}
