@@ -124,3 +124,13 @@ footer .grow{flex:1}
 .custom h3{font-size:30px;margin:4px 0 6px}
 .custom p{margin:0;color:var(--muted);max-width:640px}
 @media(max-width:760px){.custom{flex-direction:column;align-items:flex-start}}
+
+/* bride voices */
+.voices{columns:3 280px;column-gap:18px;margin-top:36px}
+.voices figure{break-inside:avoid;margin:0 0 18px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:26px 26px 20px;position:relative}
+.voices figure:before{content:"”";position:absolute;top:-6px;inset-inline-start:18px;font:700 64px Amiri,serif;color:var(--gold2)}
+.voices blockquote{margin:14px 0 0;font:400 22px/1.75 Amiri,serif;color:var(--ink)}
+.voices blockquote b{color:var(--maroon)}
+.voices .en blockquote{direction:ltr;text-align:left;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:23px}
+.voices figcaption{margin-top:12px;font-size:14px;color:var(--gold)}
+.voices figcaption:before{content:"— "}
