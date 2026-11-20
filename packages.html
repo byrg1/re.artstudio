@@ -11,7 +11,7 @@
 <link rel="icon" href="assets/logo_brown.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@1,500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -22,9 +22,9 @@
 </div></nav>
 
 <section id="packages" class="packages" style="border-top:0"><div class="wrap">
-  <span class="kicker">تختاري إيه؟</span>
-  <h2>على حسب يومك انتي</h2>
-  <p class="lead">لو هتجهزي في مكان والسيشن في مكان والقاعة في مكان، يبقى «يوم كامل». لو التجهيز مش مهم يتصوّر، «نص يوم» كفاية. ولو الفرح كبير أو في لحظات بتحصل في نفس الوقت، زي تجهيزك وتجهيز العريس، يبقى أكتر من مصوّر.</p>
+  <span class="kicker">باكدجك انتي · YOUR PACKAGE</span>
+  <h2>مش لازم تفهمي في الباكدجات</h2>
+  <p class="lead">احكيلنا عن يومك في ٣ أسئلة بس، وإحنا نقولك اللي يناسبك بالظبط. من غير ما تدفعي في حاجة مش محتاجاها، ومن غير ما لحظة مهمة تفوتك.</p>
   <div class="quiz" id="quiz">
     <div class="qtop"><span class="tag">FIND YOUR PACKAGE · اعرفي باكدجك</span><span class="qstep"></span></div>
     <div class="qbar"><i></i></div>
@@ -34,9 +34,12 @@
       <div class="opts"><button data-v="small">هادي أو كتب كتاب</button><button data-v="mid">عادي، قاعة متوسطة</button><button data-v="big">كبير، ناس كتير</button></div></div>
     <div class="q" data-q="groom" hidden><h3>العريس هيتجهز في نفس الوقت، في مكان تاني؟</h3><span class="en">Is the groom getting ready at the same time, somewhere else?</span>
       <div class="opts"><button data-v="no">لأ</button><button data-v="yes">أيوه</button></div></div>
-    <div class="qload" hidden><div class="spin"></div><p class="lt">بنشوف إجاباتك…</p><span class="en">Finding your package…</span></div>
-    <div class="qres" hidden><span class="tag">ده اللي يناسبك · YOUR MATCH</span><p class="rw"></p><div class="rcard"></div>
-      <div class="ra"><button class="btn ghost rre" type="button">جاوبي تاني</button><a class="btn ghost rall" href="#half">شوفي كل الباكدجات</a></div></div>
+    <div class="qload" hidden><div class="spin"></div><p class="lt">بنشوف يومك…</p><span class="en">Finding your package…</span></div>
+    <div class="qres" hidden><span class="tag">ده اللي يناسب يومك · YOUR MATCH</span><h3 class="rh"></h3><p class="rw"></p>
+      <div class="rgrid"><div class="rcard"></div>
+        <div class="rside"><ul class="rsure"><li>صورك كلها ليكي، وعددها مفتوح</li><li>مفيش مصاريف تظهرلك فجأة</li><li>بتأكّدي يومك بمقدّم حسب الباكدج</li><li>محتارة؟ نقولك اللي يناسبك بصراحة</li></ul>
+          <a class="btn gold rwa" href="#">ابعتيلنا إجاباتك على الواتساب</a><span class="rnote">إجاباتك هتوصلنا مكتوبة، فمش هتحتاجي تشرحي من الأول.</span></div></div>
+      <div class="ra"><button class="btn ghost rre" type="button">جاوبي تاني</button><button class="btn ghost rall" type="button">شوفي كل الباكدجات</button></div></div>
     <button class="qback" type="button" hidden>→ رجوع</button>
   </div>
 <script>
@@ -47,6 +50,7 @@
   'p-9':'عايزة يومك من الصبح، والفرح مش كبير، فـ٩ ساعات بمصوّر واحد معاكي طول اليوم.',
   'p-12a':'فرح كبير ويوم طويل، فمحتاجة ١٢ ساعة من غير ما تبصّي في الساعة.',
   'p-12b':'تجهيزك وتجهيز العريس في نفس الوقت، فمصوّر معاكي ومصوّر معاه، ١٢ ساعة.'};
+ const HEAD={'p-h1':'يومك بسيط وحلو… ونص يوم كفاية','p-h2':'قاعتك كبيرة… ومحتاجة عينين مش عين واحدة','p-9':'يومك يبدأ من الصبح… وده لازم يتحفظ','p-12a':'يومك طويل ومليان… ومش لازم تبصّي في الساعة','p-12b':'انتي والعريس في مكانين… ومحدش فيكم هيفوته حاجة'};
  const flow=()=>A.prep==='no'?['prep','size']:['prep','size','groom'];
  const pick=()=>A.prep==='no'?(A.size==='big'?'p-h2':'p-h1'):(A.groom==='yes'?'p-12b':(A.size==='big'?'p-12a':'p-9'));
  let i=0;
@@ -58,21 +62,27 @@
  }
  function finish(){
   Q.querySelectorAll('.q').forEach(q=>q.hidden=true);$('.qback').hidden=true;$('.qstep').textContent='';
-  $('.qbar i').style.width='100%';$('.qload').hidden=false;
+  $('.qbar i').style.width='100%';$('.lt').textContent='بنشوف يومك…';$('.qload').hidden=false;
   setTimeout(()=>{$('.qload').hidden=true;const id=pick();
-   $('.rw').textContent=WHY[id];
+   $('.rh').textContent=HEAD[id];$('.rw').textContent=WHY[id];
+   const L={prep:{yes:'عايزة التجهيز يتصوّر',no:'مش محتاجة التجهيز يتصوّر'},size:{small:'فرح هادي أو كتب كتاب',mid:'فرح متوسط',big:'فرح كبير'},groom:{yes:'العريس بيتجهز في نفس الوقت',no:'العريس مش بيتجهز في نفس الوقت'}};
+   const msg='أهلًا 🤍 جاوبت على أسئلة الموقع:\n'+flow().map(k=>'• '+L[k][A[k]]).join('\n')+'\nوطلعتلي: '+document.getElementById(id).querySelector('.en').textContent+'\nعاوزة أعرف التفاصيل وأشوف تاريخ فرحي متاح ولا لأ.';
+   $('.rwa').href='https://wa.me/201024724578?text='+encodeURIComponent(msg);
    const c=document.getElementById(id).cloneNode(true);c.removeAttribute('id');c.classList.add('hot');
    c.querySelectorAll('.btn').forEach(x=>x.className='btn gold');
    $('.rcard').innerHTML='';$('.rcard').appendChild(c);$('.qres').hidden=false;
-   Q.scrollIntoView({behavior:'smooth',block:'start'});},1800);
+   Q.scrollIntoView({behavior:'smooth',block:'start'});},2200);
+  setTimeout(()=>{const t=$('.lt');if(t)t.textContent='بنختارلك الأنسب…';},1100);
  }
  Q.querySelectorAll('.q').forEach(q=>q.querySelectorAll('button').forEach(b=>b.onclick=()=>{
   A[q.dataset.q]=b.dataset.v;i++;if(i>=flow().length)finish();else render();}));
  $('.qback').onclick=()=>{i=Math.max(0,i-1);render();};
+ $('.rall').onclick=()=>{const p=document.getElementById('allpk');p.hidden=false;p.scrollIntoView({behavior:'smooth'});};
  $('.rre').onclick=()=>{for(const k in A)delete A[k];i=0;$('.qres').hidden=true;render();};
  render();
 })();
 </script>
+  <div id="allpk" hidden>
   <div class="chooser">
     <a class="ch" href="#half"><span class="tag">HALF DAY</span><h3>نص يوم <span class="en">Half Day</span></h3>
       <div class="meta"><b>٦ ساعات · 6 hrs</b><b>5,000 – 7,000 جنيه</b></div>
@@ -107,6 +117,7 @@
         <ul><li>١٢ ساعة تغطية</li><li>مصوّر معاكي، ومصوّر مع العريس في نفس الوقت</li><li>القاعة من زاويتين: انتي، ووشوش اللي بيحبوكي</li><li>مفيش لحظة بتفوت لأن حد مشغول في مكان تاني</li></ul>
         <a class="btn gold" href="https://wa.me/201024724578?text=%D8%B9%D8%A7%D9%88%D8%B2%D8%A9%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%A3%D9%83%D8%AA%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%BA%D8%B7%D9%8A%D8%A9%20%D9%A1%D9%A2%20%D8%B3%D8%A7%D8%B9%D8%A9%20%D8%A8%D9%85%D8%B5%D9%88%D9%91%D8%B1%D9%8A%D9%86">اسألي عنها</a></div>
     </div>
+  </div>
   </div>
   <div class="custom">
     <div><span class="tag">CUSTOM</span><h3>فصّلي باكدجك براحتك</h3>

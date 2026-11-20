@@ -198,3 +198,11 @@ footer .grow{flex:1}
 .rcard .plan{margin:0}
 .qres .ra{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .qres .btn.ghost{cursor:pointer;font-family:inherit}
+
+.qres .rh{font-size:clamp(26px,3.2vw,36px);margin:6px 0 4px}
+.rgrid{display:grid;grid-template-columns:380px 1fr;gap:26px;align-items:start;margin-top:10px}
+.rsure{list-style:none;padding:0;margin:0 0 18px}
+.rsure li{padding:8px 0;border-bottom:1px dashed var(--line)}
+.rsure li::before{content:"🤍 "}
+.rnote{display:block;margin-top:10px;font-size:14px;color:var(--muted)}
+@media(max-width:860px){.rgrid{grid-template-columns:1fr}}
