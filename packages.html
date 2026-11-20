@@ -11,7 +11,7 @@
 <link rel="icon" href="assets/logo_brown.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@1,500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -26,44 +26,51 @@
   <h2>على حسب يومك انتي</h2>
   <p class="lead">لو هتجهزي في مكان والسيشن في مكان والقاعة في مكان، يبقى «يوم كامل». لو التجهيز مش مهم يتصوّر، «نص يوم» كفاية. ولو الفرح كبير أو في لحظات بتحصل في نفس الوقت، زي تجهيزك وتجهيز العريس، يبقى أكتر من مصوّر.</p>
   <div class="quiz" id="quiz">
-    <div class="qhead"><span class="tag">3 QUESTIONS · ٣ أسئلة</span><h3>جاوبي على ٣ أسئلة، ونقولك الباكدج اللي تناسبك</h3></div>
-    <div class="q" data-q="prep"><b>١. عايزة تجهيزك يتصوّر؟ <span class="en">Getting ready photos?</span></b>
+    <div class="qtop"><span class="tag">FIND YOUR PACKAGE · اعرفي باكدجك</span><span class="qstep"></span></div>
+    <div class="qbar"><i></i></div>
+    <div class="q" data-q="prep"><h3>عايزة تجهيزك يتصوّر؟</h3><span class="en">Do you want your getting-ready photographed?</span>
       <div class="opts"><button data-v="no">لأ، السيشن والقاعة كفاية</button><button data-v="yes">أيوه، الفستان ومامتك وصحابك</button></div></div>
-    <div class="q" data-q="size"><b>٢. الفرح حجمه قد إيه؟ <span class="en">Wedding size?</span></b>
+    <div class="q" data-q="size" hidden><h3>الفرح حجمه قد إيه؟</h3><span class="en">How big is your wedding?</span>
       <div class="opts"><button data-v="small">هادي أو كتب كتاب</button><button data-v="mid">عادي، قاعة متوسطة</button><button data-v="big">كبير، ناس كتير</button></div></div>
-    <div class="q" data-q="groom"><b>٣. تجهيزك وتجهيز العريس في نفس الوقت، في مكانين مختلفين؟ <span class="en">Groom getting ready at the same time?</span></b>
+    <div class="q" data-q="groom" hidden><h3>العريس هيتجهز في نفس الوقت، في مكان تاني؟</h3><span class="en">Is the groom getting ready at the same time, somewhere else?</span>
       <div class="opts"><button data-v="no">لأ</button><button data-v="yes">أيوه</button></div></div>
-    <div class="qres" hidden><span class="tag">ده اللي يناسبك · YOUR MATCH</span><h3 class="rt"></h3><p class="rw"></p>
-      <div class="ra"><a class="btn gold rgo" href="#">شوفي الباكدج</a><button class="btn ghost rre" type="button">جاوبي تاني</button></div></div>
+    <div class="qload" hidden><div class="spin"></div><p class="lt">بنشوف إجاباتك…</p><span class="en">Finding your package…</span></div>
+    <div class="qres" hidden><span class="tag">ده اللي يناسبك · YOUR MATCH</span><p class="rw"></p><div class="rcard"></div>
+      <div class="ra"><button class="btn ghost rre" type="button">جاوبي تاني</button><a class="btn ghost rall" href="#half">شوفي كل الباكدجات</a></div></div>
+    <button class="qback" type="button" hidden>→ رجوع</button>
   </div>
 <script>
 (function(){
- const Q=document.getElementById('quiz'),A={};
- const R={
-  'p-h1':['نص يوم · ٦ ساعات · 5,000 جنيه','السيشن والقاعة بمصوّر واحد. كفاية لفرح هادي أو كتب كتاب.'],
-  'p-h2':['نص يوم · ٦ ساعات · مصوّرين · 7,000 جنيه','القاعة كبيرة، فمصوّرين يغطوها من زاويتين ومفيش لحظة تفوت.'],
-  'p-9':['٩ ساعات · مصوّر واحد · 8,000 جنيه','من تجهيزك الصبح لحد آخر رقصة، بمصوّر واحد معاكي طول اليوم.'],
-  'p-12a':['١٢ ساعة · مصوّر واحد · 10,000 جنيه','فرح كبير ويوم طويل، فمحتاجة وقت أكتر من غير ما تبصّي في الساعة.'],
-  'p-12b':['١٢ ساعة · مصوّرين · 18,000 جنيه','تجهيزك وتجهيز العريس في نفس الوقت، فمصوّر معاكي ومصوّر معاه.']};
- function pick(){
-  if(A.prep==='no') return A.size==='big'?'p-h2':'p-h1';
-  if(A.groom==='yes') return 'p-12b';
-  return A.size==='big'?'p-12a':'p-9';
+ const Q=document.getElementById('quiz'),A={},$=s=>Q.querySelector(s);
+ const WHY={'p-h1':'فرحك هادي ومش محتاجة التجهيز يتصوّر، فـ٦ ساعات بمصوّر واحد كفاية للسيشن والقاعة.',
+  'p-h2':'القاعة كبيرة، فمصوّرين يغطوها من زاويتين ومفيش لحظة تفوت.',
+  'p-9':'عايزة يومك من الصبح، والفرح مش كبير، فـ٩ ساعات بمصوّر واحد معاكي طول اليوم.',
+  'p-12a':'فرح كبير ويوم طويل، فمحتاجة ١٢ ساعة من غير ما تبصّي في الساعة.',
+  'p-12b':'تجهيزك وتجهيز العريس في نفس الوقت، فمصوّر معاكي ومصوّر معاه، ١٢ ساعة.'};
+ const flow=()=>A.prep==='no'?['prep','size']:['prep','size','groom'];
+ const pick=()=>A.prep==='no'?(A.size==='big'?'p-h2':'p-h1'):(A.groom==='yes'?'p-12b':(A.size==='big'?'p-12a':'p-9'));
+ let i=0;
+ function render(){
+  const f=flow(),n=A.prep?f.length:3;
+  Q.querySelectorAll('.q').forEach(q=>q.hidden=q.dataset.q!==f[i]);
+  $('.qstep').textContent=`${i+1} / ${n}`;$('.qbar i').style.width=(i/n*100)+'%';
+  $('.qback').hidden=i===0;
  }
- function show(){
-  const need=A.prep==='no'?['prep','size']:['prep','size','groom'];
-  Q.querySelector('[data-q=groom]').hidden=A.prep==='no';
-  if(!need.every(k=>A[k])) return;
-  const id=pick(),r=Q.querySelector('.qres');
-  r.querySelector('.rt').textContent=R[id][0];r.querySelector('.rw').textContent=R[id][1];
-  r.querySelector('.rgo').href='#'+id;r.hidden=false;
-  document.querySelectorAll('.plan.match').forEach(e=>e.classList.remove('match'));
-  document.getElementById(id).classList.add('match');
+ function finish(){
+  Q.querySelectorAll('.q').forEach(q=>q.hidden=true);$('.qback').hidden=true;$('.qstep').textContent='';
+  $('.qbar i').style.width='100%';$('.qload').hidden=false;
+  setTimeout(()=>{$('.qload').hidden=true;const id=pick();
+   $('.rw').textContent=WHY[id];
+   const c=document.getElementById(id).cloneNode(true);c.removeAttribute('id');c.classList.add('hot');
+   c.querySelectorAll('.btn').forEach(x=>x.className='btn gold');
+   $('.rcard').innerHTML='';$('.rcard').appendChild(c);$('.qres').hidden=false;
+   Q.scrollIntoView({behavior:'smooth',block:'start'});},1800);
  }
  Q.querySelectorAll('.q').forEach(q=>q.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-  q.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');A[q.dataset.q]=b.dataset.v;show();}));
- Q.querySelector('.rgo').onclick=e=>{e.preventDefault();const t=document.getElementById(pick());t.scrollIntoView({behavior:'smooth',block:'center'});};
- Q.querySelector('.rre').onclick=()=>{for(const k in A)delete A[k];Q.querySelectorAll('.on').forEach(x=>x.classList.remove('on'));Q.querySelector('.qres').hidden=true;Q.querySelector('[data-q=groom]').hidden=false;document.querySelectorAll('.plan.match').forEach(e=>e.classList.remove('match'));};
+  A[q.dataset.q]=b.dataset.v;i++;if(i>=flow().length)finish();else render();}));
+ $('.qback').onclick=()=>{i=Math.max(0,i-1);render();};
+ $('.rre').onclick=()=>{for(const k in A)delete A[k];i=0;$('.qres').hidden=true;render();};
+ render();
 })();
 </script>
   <div class="chooser">

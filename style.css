@@ -174,16 +174,27 @@ footer .grow{flex:1}
 .ch.dark .go{color:var(--gold2)}
 @media(max-width:760px){.chooser{grid-template-columns:1fr}}
 
-.quiz{margin-top:34px;background:var(--paper);border:1.5px solid var(--gold);border-radius:22px;padding:28px}
-.quiz .tag,.qres .tag{font:600 12px "IBM Plex Sans Arabic";letter-spacing:3px;color:var(--gold)}
-.qhead h3{font-size:clamp(24px,3vw,32px);margin:4px 0 6px}
-.q{margin-top:20px}.q>b{display:block;margin-bottom:10px;font-size:17px}
-.q .en{font:italic 500 16px "Cormorant Garamond",serif;opacity:.65;margin-inline-start:6px}
+.quiz{margin-top:34px;background:var(--paper);border:1.5px solid var(--gold);border-radius:22px;padding:28px;min-height:280px;position:relative}
+.qtop{display:flex;justify-content:space-between;align-items:center}
+.quiz .tag{font:600 12px "IBM Plex Sans Arabic";letter-spacing:3px;color:var(--gold)}
+.qstep{font-size:14px;color:var(--muted)}
+.qbar{height:4px;background:var(--line);border-radius:4px;margin:12px 0 22px;overflow:hidden}
+.qbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+.q h3{font-size:clamp(26px,3.4vw,36px)}
+.quiz .en{display:block;font:italic 500 17px "Cormorant Garamond",serif;opacity:.65;margin:2px 0 18px}
+.q{animation:qin .35s ease}
+@keyframes qin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .opts{display:flex;gap:10px;flex-wrap:wrap}
-.opts button{font:500 15px "IBM Plex Sans Arabic",sans-serif;padding:10px 18px;border-radius:99px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:all .15s}
-.opts button:hover{border-color:var(--gold)}
-.opts button.on{background:var(--ink);color:#F8F1E1;border-color:var(--ink)}
-.qres{margin-top:24px;background:var(--ink);color:#F4E8D6;border-radius:18px;padding:22px 24px}
-.qres .tag{color:var(--gold2)}.qres h3{font-size:28px;margin:4px 0 6px}.qres p{margin:0 0 16px;color:#CDBBA3}
-.qres .ra{display:flex;gap:10px;flex-wrap:wrap}.qres .btn.ghost{color:#F4E8D6;border-color:#F4E8D6;cursor:pointer;font-family:inherit}
-.plan.match{outline:3px solid var(--gold2);outline-offset:4px}
+.opts button{font:500 16px "IBM Plex Sans Arabic",sans-serif;padding:12px 22px;border-radius:99px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);cursor:pointer;transition:all .15s}
+.opts button:hover{border-color:var(--ink);background:var(--ink);color:#F8F1E1}
+.qback{margin-top:18px;background:none;border:0;color:var(--muted);font:500 14px "IBM Plex Sans Arabic";cursor:pointer}
+.qload{text-align:center;padding:30px 0}
+.qload .lt{font:700 24px Amiri,serif;margin:14px 0 0}
+.spin{width:44px;height:44px;margin:0 auto;border:3px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.qres{animation:qin .4s ease}
+.qres .rw{font-size:18px;margin:6px 0 16px;max-width:640px}
+.rcard{max-width:380px}
+.rcard .plan{margin:0}
+.qres .ra{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.qres .btn.ghost{cursor:pointer;font-family:inherit}
