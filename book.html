@@ -10,14 +10,15 @@
 <link rel="icon" href="assets/logo_brown.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@1,500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
 <nav><div class="wrap">
   <a class="logo" href="index.html" aria-label="RE ArtStudio"><img src="assets/logo_brown.png" alt="RE ArtStudio"></a>
-  <div class="links"><a href="index.html">الاستوديو</a><a href="#inside">هيساعدك في إيه</a><a href="#peek">بصّي من جوه</a><a href="#faq">أسئلة</a></div>
+  <div class="links" id="menu"><a href="index.html">الاستوديو</a><a href="#inside">هيساعدك في إيه</a><a href="#peek">بصّي من جوه</a><a href="#faq">أسئلة</a></div>
   <a class="btn" href="https://wa.me/201024724578?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%F0%9F%A4%8D%20%D8%B9%D8%A7%D9%88%D8%B2%D8%A9%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%B9%D8%B1%D9%88%D8%B3%D8%A9">ابدئي ترتّبي يومك</a>
+  <button class="menubtn" aria-label="القايمة" onclick="document.getElementById(\'menu\').classList.toggle(\'open\')">☰</button>
 </div></nav>
 
 <header class="bhero"><section><div class="wrap">
@@ -29,6 +30,7 @@
       <a class="btn" href="https://wa.me/201024724578?text=%D8%A3%D9%87%D9%84%D9%8B%D8%A7%20%F0%9F%A4%8D%20%D8%B9%D8%A7%D9%88%D8%B2%D8%A9%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%B9%D8%B1%D9%88%D8%B3%D8%A9">ابدئي ترتّبي يومك</a>
       <a class="btn ghost" href="#inside">هيساعدني في إيه؟</a>
     </p>
+    <p class="bprice"><b>١,٥٠٠ جنيه</b> <s>٣,٠٠٠</s> <span>سعر فترة التجربة</span></p>
     <p style="color:var(--muted);font-size:14px;margin-top:14px">ملف PDF يوصلك على الواتساب، وتفتحيه من موبايلك في أي وقت.</p>
   </div>
   <img src="assets/b_cover.jpg" alt="غلاف دليل العروسة">
