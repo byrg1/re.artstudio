@@ -154,3 +154,4 @@ footer .grow{flex:1}
 .tier12 .plan.hot .tag{color:var(--gold)}
 .tier12 .plan.hot li{border-color:var(--line)}
 @media(max-width:760px){.pk2{grid-template-columns:1fr}.tier12{padding:28px 20px}}
+.plan .en{display:block;font:italic 500 17px "Cormorant Garamond",serif;letter-spacing:.3px;opacity:.75;direction:ltr;text-align:right}
